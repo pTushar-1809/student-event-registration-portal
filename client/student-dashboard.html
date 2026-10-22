@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <div class="navbar container">
+        <h2>Event Portal</h2>
+        <div style="display: flex; align-items: center; gap: 20px;">
+            <span style="font-weight: 500;">Hello, <span id="userNameDisplay"></span></span>
+            <button id="logoutBtn" class="danger small">Logout</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <h3>My Registrations</h3>
+        <div id="myRegistrations" class="events-grid" style="margin-bottom: 40px;">
+            <!-- Rendered via JS -->
+        </div>
+
+        <hr>
+
+        <h3>Available Upcoming Events</h3>
+        <div id="eventsList" class="events-grid">
+            <!-- Rendered via JS -->
+        </div>
+    </div>
+
+    <script src="./js/student-dashboard.js"></script>
+</body>
+</html>

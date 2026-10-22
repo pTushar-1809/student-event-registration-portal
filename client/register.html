@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Portal</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <div class="auth-wrapper">
+        <div class="auth-card" style="max-width: 600px;">
+            <h2 style="text-align: center; margin-bottom: 20px;">Create an Account</h2>
+            <div id="serverMessage" style="text-align: center; margin-bottom: 15px; font-weight: 500;"></div>
+            
+            <form id="registerForm">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>College ID</label>
+                        <input type="text" id="collegeId" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="email" required>
+                    <div id="emailError" class="error">Please enter a valid email format.</div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="password" required autocomplete="new-password">
+                        <div id="passwordError" class="error">Use at least 8 characters, including 1 uppercase letter and 1 number. Symbols are allowed.</div>
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm Password</label>
+                        <input type="password" id="confirmPassword" required autocomplete="new-password">
+                        <div id="matchError" class="error">Passwords do not match.</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Account Type</label>
+                    <select id="role" required>
+                        <option value="student">Student</option>
+                    </select>
+                </div>
+                
+                <button type="submit">Register Account</button>
+                
+                <div class="links">
+                    <p>Already have an account? <a href="login.html">Login here</a></p>
+                    <p style="margin-top: 10px;"><a href="index.html">← Back to Home</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="./js/register.js"></script>
+</body>
+</html>

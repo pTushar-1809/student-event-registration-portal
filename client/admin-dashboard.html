@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <div class="navbar container">
+        <h2>Admin Control Panel</h2>
+        <div style="display: flex; align-items: center; gap: 20px;">
+            <span style="font-weight: 500;">Admin: <span id="adminName"></span></span>
+            <button id="logoutBtn" class="danger small">Logout</button>
+        </div>
+    </div>
+
+    <main class="container">
+        <section class="admin-stats" aria-label="Dashboard statistics">
+            <article class="admin-stat"><span>Total Users</span><strong id="totalUsers">-</strong></article>
+            <article class="admin-stat"><span>Total Events</span><strong id="totalEvents">-</strong></article>
+            <article class="admin-stat"><span>Active Registrations</span><strong id="totalRegistrations">-</strong></article>
+            <article class="admin-stat"><span>Active Alumni</span><strong id="activeAlumni">-</strong></article>
+        </section>
+
+        <div class="container admin-container">
+        <div class="admin-panel">
+            <h3>Create New Event</h3>
+            <form id="createEventForm">
+                <div class="form-group">
+                    <label>Event Title</label>
+                    <input type="text" id="title" required>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="description" rows="3" required></textarea>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="form-group">
+                        <label>Date & Time</label>
+                        <input type="datetime-local" id="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Capacity</label>
+                        <input type="number" id="capacity" min="1" step="1" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Location</label>
+                    <input type="text" id="location" required>
+                </div>
+                <div class="form-group">
+                    <label>Category (e.g., Workshop, Seminar)</label>
+                    <input type="text" id="category" required>
+                </div>
+                <div class="form-group">
+                    <label for="banner">Event Banner (JPG, PNG, or WebP; max 2 MB)</label>
+                    <input type="file" id="banner" accept="image/jpeg,image/png,image/webp">
+                    <div id="currentBannerContainer" hidden>
+                        <img id="currentBanner" alt="Current event banner" class="admin-banner-preview">
+                        <label class="inline-control"><input type="checkbox" id="removeBanner"> Remove current banner</label>
+                    </div>
+                </div>
+                <div class="admin-form-actions" style="display: flex; gap: 10px;">
+                    <button id="eventSubmitButton" type="submit">Publish Event</button>
+                    <button id="cancelEditButton" class="danger" type="button" hidden>Cancel Edit</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- List Panel -->
+        <div class="admin-panel">
+            <h3>Manage Events</h3>
+            <div id="adminEventsList" style="margin-top: 20px;">
+                <!-- Rendered via JS -->
+            </div>
+        </div>
+        </div>
+
+        <section class="admin-panel admin-section">
+            <h3>User Management</h3>
+            <label for="userSearch">Search by name, email, or college ID</label>
+            <input type="search" id="userSearch" placeholder="Search users">
+            <div id="adminUsersList" class="admin-users-list" aria-live="polite"></div>
+        </section>
+
+        <section class="admin-panel admin-section">
+            <h3>Registration Reports</h3>
+            <div class="admin-toolbar">
+                <label for="reportEventSelect">Event</label>
+                <select id="reportEventSelect"></select>
+                <button id="loadReportButton" class="small" type="button">Load Report</button>
+                <button id="exportReportButton" class="small" type="button">Export CSV</button>
+            </div>
+            <div id="registrationReport" aria-live="polite"></div>
+        </section>
+
+        <section class="admin-panel admin-section">
+            <h3>Email Event Registrants</h3>
+            <form id="bulkEmailForm">
+                <div class="form-group">
+                    <label for="emailEventSelect">Event</label>
+                    <select id="emailEventSelect" required></select>
+                </div>
+                <div class="form-group">
+                    <label for="bulkEmailSubject">Subject</label>
+                    <input id="bulkEmailSubject" type="text" maxlength="200" required>
+                </div>
+                <div class="form-group">
+                    <label for="bulkEmailMessage">Message</label>
+                    <textarea id="bulkEmailMessage" rows="4" maxlength="5000" required></textarea>
+                </div>
+                <button class="small" type="submit">Send to Active Registrants</button>
+            </form>
+            <p id="bulkEmailResult" role="status"></p>
+        </section>
+    </main>
+
+    <script src="./js/admin-dashboard.js"></script>
+</body>
+</html>
